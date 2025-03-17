@@ -7,8 +7,7 @@ package bloodtest;
 public class Person implements Comparable<Person> {
     private String name;
     private int age;
-    private String priority; // Urgent, Medium, Low
-    private String gpDetails;  // GP details (doctor name)
+    private String priority;  // Urgent, Medium, Low
     private boolean fromHospital;
 
     // Constructor
@@ -16,11 +15,10 @@ public class Person implements Comparable<Person> {
         this.name = name;
         this.age = age;
         this.priority = priority;
-        this.gpDetails = gpDetails;
         this.fromHospital = fromHospital;
     }
     
-
+    // Priority calculation logic
     public int getPriorityValue() {
         int priorityValue = switch (priority) {
             case "Urgent" -> 3;
@@ -32,6 +30,12 @@ public class Person implements Comparable<Person> {
         return priorityValue;
     }
 
+    @Override
+    public int compareTo(Person other) {
+        return Integer.compare(other.getPriorityValue(), this.getPriorityValue());  // Compare by priority value
+    }
+
+    // Getters
     public String getName() {
         return name;
     }
@@ -44,19 +48,10 @@ public class Person implements Comparable<Person> {
         return priority;
     }
 
-    public String getGPDetails() {
-        return gpDetails;
-    }
-
     public boolean isFromHospital() {
         return fromHospital;
     }
-
-    @Override
-    public int compareTo(Person other) {
-        return Integer.compare(other.getPriorityValue(), this.getPriorityValue()); // Descending priority
-    }
-
+    
     @Override
     public String toString() {
         return name + " - " + priority + " - " + (fromHospital ? "From Hospital" : "Not from Hospital");
