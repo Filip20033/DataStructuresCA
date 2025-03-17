@@ -4,18 +4,23 @@
  */
 package bloodtest;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author tenhe
  */
 public class BloodGUI extends javax.swing.JFrame {
+     private PatientQueue patientQueue;
 
     /**
      * Creates new form BloodGUI
      */
     public BloodGUI() {
         initComponents();
+        patientQueue = new PatientQueue(LogTA);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +31,199 @@ public class BloodGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nameLBL = new javax.swing.JLabel();
+        nextBTN = new javax.swing.JButton();
+        scheduleBTN = new javax.swing.JButton();
+        nameTF = new javax.swing.JTextField();
+        titleLBL = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        LogTA = new javax.swing.JTextArea();
+        priorityDB = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        ageTF = new javax.swing.JTextField();
+        noShowListBTN = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        nameLBL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nameLBL.setText("Name");
+
+        nextBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nextBTN.setText("Next Patient");
+        nextBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBTNActionPerformed(evt);
+            }
+        });
+
+        scheduleBTN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        scheduleBTN.setText("Schedule");
+        scheduleBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduleBTNActionPerformed(evt);
+            }
+        });
+
+        nameTF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nameTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTFActionPerformed(evt);
+            }
+        });
+
+        titleLBL.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        titleLBL.setText("Blood Tester.");
+
+        LogTA.setColumns(20);
+        LogTA.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        LogTA.setRows(5);
+        jScrollPane1.setViewportView(LogTA);
+
+        priorityDB.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        priorityDB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Low", "Medium", "Urgent", " ", " " }));
+        priorityDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priorityDBActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Priority");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Age");
+
+        ageTF.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ageTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageTFActionPerformed(evt);
+            }
+        });
+
+        noShowListBTN.setText("No Show-List");
+        noShowListBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noShowListBTNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(titleLBL, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(nameLBL)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(10, 10, 10)))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(scheduleBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nextBTN, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nameTF)
+                                    .addComponent(ageTF, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                                .addComponent(priorityDB, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(71, 71, 71)
+                .addComponent(noShowListBTN)
+                .addContainerGap(88, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(titleLBL)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLBL)
+                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(ageTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(noShowListBTN))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(priorityDB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(scheduleBTN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(nextBTN)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nextBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBTNActionPerformed
+        Person nextPatient = patientQueue.getNextPatient(); // Get the next patient from the queue
+
+    if (nextPatient == null) {
+        LogTA.append("No patients in queue.\n"); // No patients in queue
+    } else {
+        LogTA.append("Next: " + nextPatient.getName() + " (" + nextPatient.getPriority() + " priority)\n"); // Display next patient details
+    }
+    
+    }//GEN-LAST:event_nextBTNActionPerformed
+
+    private void scheduleBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleBTNActionPerformed
+      String name = nameTF.getText();
+    String priority = (String) priorityDB.getSelectedItem();
+    String ageText = ageTF.getText();  // Get age from the new JTextField
+
+    // Check if the input is valid
+    if (name.isEmpty() || ageText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a name and age.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        int age = Integer.parseInt(ageText);  // Convert age to integer
+        Person patient = new Person(name, age, priority, "Dr. Smith", false);  // Create a new patient
+        patientQueue.scheduleTest(patient);  // Schedule the test
+
+        LogTA.append("Scheduled: " + name + " - " + priority + " - Age: " + age + "\n");
+        nameTF.setText("");  // Clear name field
+        ageTF.setText("");  // Clear age field
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid age.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_scheduleBTNActionPerformed
+
+    private void priorityDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityDBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_priorityDBActionPerformed
+
+    private void nameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTFActionPerformed
+
+    private void ageTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageTFActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ageTFActionPerformed
+
+    private void noShowListBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noShowListBTNActionPerformed
+        // TODO add your handling code here:
+        patientQueue.displayNoShowList();
+    }//GEN-LAST:event_noShowListBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +261,17 @@ public class BloodGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea LogTA;
+    private javax.swing.JTextField ageTF;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nameLBL;
+    private javax.swing.JTextField nameTF;
+    private javax.swing.JButton nextBTN;
+    private javax.swing.JButton noShowListBTN;
+    private javax.swing.JComboBox<String> priorityDB;
+    private javax.swing.JButton scheduleBTN;
+    private javax.swing.JLabel titleLBL;
     // End of variables declaration//GEN-END:variables
 }

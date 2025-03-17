@@ -15,6 +15,8 @@ public class BloodTestApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+         BloodGUI bloodGui = new BloodGUI();
+         bloodGui.setVisible(true);
     }
     
 }
